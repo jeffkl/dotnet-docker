@@ -6,5 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>57393389627611478466</UserSecretsId>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Omnia.Fx.NetCore.WebApp" Version="6.8.22" />
+  </ItemGroup>
 
 </Project>

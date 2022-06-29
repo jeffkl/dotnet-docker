@@ -4,7 +4,11 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
+COPY *.Config .
 COPY aspnetapp/*.csproj ./aspnetapp/
+ARG FEED_ACCESSTOKEN
+RUN dotnet nuget locals all --clear
+RUN dotnet nuget update source jeffkl-work --source https://pkgs.dev.azure.com/jeffkl-work/_packaging/jeffkl-work/nuget/v3/index.json --username ANYTHING --password ${FEED_ACCESSTOKEN} --configfile NuGet.Config --store-password-in-clear-text
 RUN dotnet restore
 
 # copy everything else and build app
